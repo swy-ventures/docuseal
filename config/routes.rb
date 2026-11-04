@@ -34,6 +34,8 @@ Rails.application.routes.draw do
         resources :emails, only: %i[create], controller: 'submissions', as: :submissions_emails
       end
     end
+    # Resident Help fork: create a template from PDF/DOCX URL(s)
+    post 'templates/pdf', to: 'templates_pdf#create', as: :templates_pdf
     resources :templates, only: %i[update show index destroy] do
       resources :clone, only: %i[create], controller: 'templates_clone'
       resources :submissions, only: %i[index create]

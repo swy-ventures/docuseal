@@ -3,6 +3,8 @@
 class SubmitFormController < ApplicationController
   layout 'form'
 
+  include RhEmbeddable
+
   around_action :with_browser_locale, only: %i[show completed success delegated]
   skip_before_action :authenticate_user!
   skip_authorization_check
